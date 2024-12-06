@@ -1,0 +1,82 @@
+CREATE TABLE LOCATION (
+    LocationID INT NOT NULL,
+    Latitude DOUBLE NOT NULL,
+    LocationName VARCHAR(255) NOT NULL,
+    Longitude DOUBLE NOT NULL,
+    PRIMARY KEY (LocationID)
+);
+
+CREATE TABLE EPIDEMICS (
+    EpidemicID INT NOT NULL,
+    LocationID INT NOT NULL,
+    NameEpidemic VARCHAR(255) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+    PRIMARY KEY (EpidemicID),
+    CONSTRAINT location_epidemics_fk
+        FOREIGN KEY (LocationID)
+        REFERENCES LOCATION (LocationID)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+
+CREATE TABLE SIMULATIONS (
+    SimulationID INT NOT NULL,
+    EpidemicID INT NOT NULL,
+    PRIMARY KEY (SimulationID),
+    CONSTRAINT epidemics_simulations_fk
+        FOREIGN KEY (EpidemicID)
+        REFERENCES EPIDEMICS (EpidemicID)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+
+CREATE TABLE SEIR_PARAMETERS (
+    ResultID INT NOT NULL,
+    SimulationID INT NOT NULL,
+    Beta FLOAT NOT NULL,
+    Sigma FLOAT NOT NULL,
+    Gamma FLOAT NOT NULL,
+    Suceptible INT NOT NULL,
+    Exposed INT NOT NULL,
+    Infected INT NOT NULL,
+    Recovered INT NOT NULL,
+    DateSimulation DATE NOT NULL,
+    TimeFinal INT NOT NULL,
+    PRIMARY KEY (ResultID),
+    CONSTRAINT simulations_seir_parameters_fk
+        FOREIGN KEY (SimulationID)
+        REFERENCES SIMULATIONS (SimulationID)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+
+CREATE TABLE USER_DATA (
+    UserID INT NOT NULL,
+    Role VARCHAR(50) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    PRIMARY KEY (UserID)
+);
+
+CREATE TABLE SEIR_RESULTS (
+    ResultID INT NOT NULL,
+    SimulationID INT NOT NULL,
+    Result_Suceptible INT NOT NULL,
+    Result_Exposed INT NOT NULL,
+    Result_Infected INT NOT NULL,
+    Result_Recovered INT NOT NULL,
+    Date_Simulation DATE NOT NULL,
+    UserID INT NOT NULL,
+    PRIMARY KEY (ResultID),
+    CONSTRAINT simulations_seir_results_fk
+        FOREIGN KEY (SimulationID)
+        REFERENCES SIMULATIONS (SimulationID)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT user_data_seir_results_fk
+        FOREIGN KEY (UserID)
+        REFERENCES USER_DATA (UserID)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);

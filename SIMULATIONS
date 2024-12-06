@@ -1,0 +1,95 @@
+# 1. Crear una nueva simulación (POST)
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 1,
+    "EpidemicID": 1
+}'
+
+# 2. Obtener todas las simulaciones (GET)
+curl -X GET http://localhost:5000/simulations
+
+# 3. Obtener una simulación por ID (GET)
+curl -X GET http://localhost:5000/simulations/1
+
+# 4. Actualizar una simulación (PUT)
+curl -X PUT http://localhost:5000/simulations/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 2
+}'
+
+# 5. Eliminar una simulación (DELETE) CASCADA
+curl -X DELETE http://localhost:5000/simulations/1
+
+
+# 6. DATOS
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 1,
+    "EpidemicID": 1
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 2,
+    "EpidemicID": 2
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 3,
+    "EpidemicID": 3
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 4,
+    "EpidemicID": 4
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 5,
+    "EpidemicID": 5
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 6,
+    "EpidemicID": 6
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 7,
+    "EpidemicID": 7
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 8,
+    "EpidemicID": 8
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 9,
+    "EpidemicID": 9
+}'
+
+curl -X POST http://localhost:5000/simulations \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 10,
+    "EpidemicID": 10
+}'

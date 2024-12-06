@@ -1,0 +1,88 @@
+Obtener epidemias con sus ubicaciones y simulaciones asociadas:
+    Necesitarás un join entre Epidemics, Location, y Simulations.
+    Usa un LEFT JOIN si quieres incluir epidemias que aún no tienen simulaciones.
+
+Consultar simulaciones con parámetros SEIR y resultados:
+
+    Usa INNER JOIN, porque siempre habrá datos relacionados si la simulación fue creada correctamente.
+
+Consulta óptima para tres tablas
+
+Supongamos que quieres obtener:
+
+    El nombre de la epidemia.
+    Su ubicación.
+    Simulaciones realizadas.
+
+SELECT 
+    E.NameEpidemic,
+    L.LocationName,
+    L.Latitude,
+    L.Longitude,
+    S.SimulationID
+FROM EPIDEMICS E
+INNER JOIN LOCATION L ON E.LocationID = L.LocationID
+LEFT JOIN SIMULATIONS S ON E.EpidemicID = S.EpidemicID;
+
+
+
+#CURL 
+curl -X GET http://localhost:5000/epidemics_with_simulations
+
+##Nuevo join 
+curl -X GET http://localhost:5000/epidemic_peaks
+
+#NUEVO JOIN
+ curl -X GET http://localhost:5000/epidemic_recoveries
+
+
+1. Endpoint /epidemics_with_simulations
+
+    Importancia:
+        Proporciona un panorama general de las epidemias, sus ubicaciones y las simulaciones asociadas.
+        Facilita la integración entre diferentes entidades: epidemias, ubicaciones y simulaciones.
+        Es útil para visualizar datos geoespaciales y planificar intervenciones basadas en la ubicación.
+
+    Cómo se construyó:
+        Se usa una consulta en SQLAlchemy para unir tres tablas:
+            Epidemics: Contiene datos de las epidemias.
+            Location: Relaciona cada epidemia con una ubicación específica.
+            Simulations: Relaciona epidemias con simulaciones (de forma opcional, gracias a outerjoin).
+        El resultado se procesa en Python, mapeando los datos a una lista de diccionarios para su conversión a JSON.
+        Se usa un outerjoin para incluir epidemias sin simulaciones, lo que asegura que los datos sean completos.
+
+2. Endpoint /epidemic_peaks
+
+    Importancia:
+        Identifica el día con el mayor número de infectados para cada epidemia.
+        Proporciona estadísticas adicionales, como el promedio de infectados por epidemia.
+        Ayuda a entender patrones de propagación y evaluar el impacto de las epidemias.
+
+    Cómo se construyó:
+        Se usa una subconsulta con WITH PeakData para encontrar el día de mayor infección (PeakInfected) para cada epidemia:
+            Esta subconsulta selecciona los máximos de infectados por epidemia desde la tabla de resultados (SEIR_RESULTS).
+            Usa funciones como MAX y subconsultas para identificar valores de pico.
+        La consulta principal:
+            Calcula el promedio (AVG) y el pico (MAX) de infectados por epidemia.
+            Agrupa los datos por epidemia y fecha del pico.
+        SQLAlchemy ejecuta la consulta con text(), permitiendo usar SQL puro para operaciones avanzadas.
+        El resultado se convierte en JSON en Python para que sea consumible por otros servicios.
+
+3. Endpoint /epidemic_recoveries
+
+    Importancia:
+        Proporciona datos sobre la recuperación de pacientes en epidemias.
+        Identifica el día en que hubo mayor número de recuperados (PeakRecovered) y calcula el promedio de recuperados.
+        Ayuda a evaluar la efectividad de las intervenciones o el impacto del tratamiento en la población.
+
+    Cómo se construyó:
+        Similar al endpoint de picos de infección, utiliza un WITH para calcular el día y número máximo de recuperados (PeakRecovered).
+        La consulta principal calcula estadísticas clave, como el promedio y el máximo de recuperados, agrupados por epidemia y fecha.
+        Los datos se procesan en Python para estructurarlos en un formato JSON.
+
+Estos endpoints son fundamentales para analizar y monitorear datos epidémicos. Su diseño modular y enfocado en datos clave permite:
+
+    Integrar fácilmente con sistemas de visualización o paneles de control.
+    Tomar decisiones informadas basadas en datos históricos y simulaciones.
+    Facilitar el análisis comparativo entre epidemias, ubicaciones y resultados simulados.
+

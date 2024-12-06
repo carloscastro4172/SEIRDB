@@ -1,0 +1,202 @@
+# 1. Crear un nuevo SEIR parameter (POST)
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 1,
+    "SimulationID": 1,
+    "Beta": 0.2,
+    "Sigma": 0.1,
+    "Gamma": 0.05,
+    "Suceptible": 1000,
+    "Exposed": 100,
+    "Infected": 50,
+    "Recovered": 10,
+    "DateSimulation": "2024-12-01",
+    "TimeFinal": 100
+}'
+
+# 2. Obtener todos los SEIR parameters (GET)
+curl -X GET http://localhost:5000/seirparameters
+
+# 3. Obtener un SEIR parameter por ID (GET)
+curl -X GET http://localhost:5000/seirparameters/1
+
+# 4. Actualizar un SEIR parameter (PUT)
+curl -X PUT http://localhost:5000/seirparameters/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 2,
+    "Beta": 0.3,
+    "Sigma": 0.15,
+    "Gamma": 0.07,
+    "Suceptible": 1100,
+    "Exposed": 150,
+    "Infected": 75,
+    "Recovered": 25,
+    "DateSimulation": "2024-12-10",
+    "TimeFinal": 150
+}'
+
+# 5. Eliminar un SEIR parameter (DELETE)
+curl -X DELETE http://localhost:5000/seirparameters/1
+# 6. DATOS 
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 1,
+    "SimulationID": 1,
+    "Beta": 0.2,
+    "Sigma": 0.1,
+    "Gamma": 0.05,
+    "Suceptible": 1000,
+    "Exposed": 100,
+    "Infected": 50,
+    "Recovered": 10,
+    "DateSimulation": "2024-01-01",
+    "TimeFinal": 100
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 2,
+    "SimulationID": 2,
+    "Beta": 0.3,
+    "Sigma": 0.12,
+    "Gamma": 0.06,
+    "Suceptible": 950,
+    "Exposed": 120,
+    "Infected": 80,
+    "Recovered": 20,
+    "DateSimulation": "2024-02-15",
+    "TimeFinal": 120
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 3,
+    "SimulationID": 3,
+    "Beta": 0.25,
+    "Sigma": 0.15,
+    "Gamma": 0.07,
+    "Suceptible": 980,
+    "Exposed": 110,
+    "Infected": 60,
+    "Recovered": 25,
+    "DateSimulation": "2024-03-01",
+    "TimeFinal": 130
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 4,
+    "SimulationID": 4,
+    "Beta": 0.28,
+    "Sigma": 0.14,
+    "Gamma": 0.08,
+    "Suceptible": 970,
+    "Exposed": 115,
+    "Infected": 70,
+    "Recovered": 30,
+    "DateSimulation": "2024-04-20",
+    "TimeFinal": 150
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 5,
+    "SimulationID": 5,
+    "Beta": 0.22,
+    "Sigma": 0.1,
+    "Gamma": 0.06,
+    "Suceptible": 1050,
+    "Exposed": 90,
+    "Infected": 40,
+    "Recovered": 15,
+    "DateSimulation": "2024-05-05",
+    "TimeFinal": 110
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 6,
+    "SimulationID": 6,
+    "Beta": 0.26,
+    "Sigma": 0.13,
+    "Gamma": 0.09,
+    "Suceptible": 990,
+    "Exposed": 105,
+    "Infected": 65,
+    "Recovered": 18,
+    "DateSimulation": "2024-06-10",
+    "TimeFinal": 140
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 7,
+    "SimulationID": 7,
+    "Beta": 0.24,
+    "Sigma": 0.11,
+    "Gamma": 0.05,
+    "Suceptible": 1020,
+    "Exposed": 85,
+    "Infected": 55,
+    "Recovered": 12,
+    "DateSimulation": "2024-07-01",
+    "TimeFinal": 160
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 8,
+    "SimulationID": 8,
+    "Beta": 0.3,
+    "Sigma": 0.14,
+    "Gamma": 0.07,
+    "Suceptible": 940,
+    "Exposed": 130,
+    "Infected": 75,
+    "Recovered": 20,
+    "DateSimulation": "2024-08-10",
+    "TimeFinal": 180
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 9,
+    "SimulationID": 9,
+    "Beta": 0.27,
+    "Sigma": 0.12,
+    "Gamma": 0.06,
+    "Suceptible": 960,
+    "Exposed": 100,
+    "Infected": 45,
+    "Recovered": 10,
+    "DateSimulation": "2024-09-20",
+    "TimeFinal": 140
+}'
+
+curl -X POST http://localhost:5000/seirparameters \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 10,
+    "SimulationID": 10,
+    "Beta": 0.2,
+    "Sigma": 0.1,
+    "Gamma": 0.05,
+    "Suceptible": 1100,
+    "Exposed": 95,
+    "Infected": 60,
+    "Recovered": 5,
+    "DateSimulation": "2024-10-15",
+    "TimeFinal": 110
+}'

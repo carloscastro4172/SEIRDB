@@ -1,0 +1,107 @@
+# 1. Crear un nuevo usuario (POST)
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 1,
+    "Role": "Admin",
+    "Email": "admin@example.com"
+}'
+
+# 2. Obtener todos los usuarios (GET)
+curl -X GET http://localhost:5000/userdata
+
+# 3. Obtener un usuario por ID (GET)
+curl -X GET http://localhost:5000/userdata/1
+
+# 4. Actualizar un usuario (PUT)
+curl -X PUT http://localhost:5000/userdata/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "Role": "User",
+    "Email": "user@example.com"
+}'
+
+# 5. Eliminar un usuario (DELETE)
+curl -X DELETE http://localhost:5000/userdata/1
+
+# 6. VALORES A GUARDAR 
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 1,
+    "Role": "Investigador de Salud",
+    "Email": "ana.martinez@saludglobal.com"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 2,
+    "Role": "Investigador de Salud",
+    "Email": "juan.perez@centrosalud.org"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 3,
+    "Role": "Investigador de Salud",
+    "Email": "carolina.lopez@institutosalud.edu"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 4,
+    "Role": "Investigador de Salud",
+    "Email": "pedro.gonzalez@researchhealth.net"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 5,
+    "Role": "Investigador de Salud",
+    "Email": "maria.rodriguez@saludpublica.org"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 6,
+    "Role": "Investigador de Salud",
+    "Email": "victor.martin@healthsolutions.com"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 7,
+    "Role": "Investigador de Salud",
+    "Email": "lucia.sanchez@saludavanzada.net"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 8,
+    "Role": "Investigador de Salud",
+    "Email": "jorge.fernandez@medicineresearch.org"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 9,
+    "Role": "Investigador de Salud",
+    "Email": "clara.morales@healthstudies.edu"
+}'
+
+curl -X POST http://localhost:5000/userdata \
+-H "Content-Type: application/json" \
+-d '{
+    "UserID": 10,
+    "Role": "Investigador de Salud",
+    "Email": "diego.castillo@researchhealthcare.com"
+}'

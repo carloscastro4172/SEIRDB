@@ -1,0 +1,35 @@
+# 1. Crear un nuevo SEIR result (POST)
+curl -X POST http://localhost:5000/seirresults \
+-H "Content-Type: application/json" \
+-d '{
+    "ResultID": 1,
+    "SimulationID": 1,
+    "Result_Suceptible": 1000,
+    "Result_Exposed": 200,
+    "Result_Infected": 150,
+    "Result_Recovered": 50,
+    "Date_Simulation": "2024-12-01",
+    "UserID": 1
+}'
+
+# 2. Obtener todos los SEIR results (GET)
+curl -X GET http://localhost:5000/seirresults
+
+# 3. Obtener un SEIR result por ID (GET)
+curl -X GET http://localhost:5000/seirresults/1
+
+# 4. Actualizar un SEIR result (PUT)
+curl -X PUT http://localhost:5000/seirresults/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "SimulationID": 2,
+    "Result_Suceptible": 1100,
+    "Result_Exposed": 220,
+    "Result_Infected": 180,
+    "Result_Recovered": 80,
+    "Date_Simulation": "2024-12-10",
+    "UserID": 1
+}'
+
+# 5. Eliminar un SEIR result (DELETE)
+curl -X DELETE http://localhost:5000/seirresults/1

@@ -1,0 +1,142 @@
+# 1. Crear una nueva epidemia (POST)
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 1,
+    "LocationID": 1,
+    "NameEpidemic": "COVID-19",
+    "StartDate": "2020-01-01",
+    "EndDate": "2020-12-31",
+    "Description": "A global pandemic"
+}'
+
+# 2. Obtener todas las epidemias (GET)
+curl -X GET http://localhost:5000/epidemics
+
+# 3. Obtener una epidemia por ID (GET)
+curl -X GET http://localhost:5000/epidemics/1
+
+# 4. Actualizar una epidemia (PUT)
+curl -X PUT http://localhost:5000/epidemics/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "LocationID": 2,
+    "NameEpidemic": "COVID-19 Variant",
+    "StartDate": "2021-01-01",
+    "EndDate": "2021-12-31",
+    "Description": "A new variant of COVID-19"
+}'
+
+# 5. Eliminar una epidemia (DELETE)
+curl -X DELETE http://localhost:5000/epidemics/1
+
+# 6. 10 DATOS 
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 1,
+    "LocationID": 1,
+    "NameEpidemic": "COVID-24",
+    "StartDate": "2024-01-01",
+    "EndDate": "2024-12-31",
+    "Description": "A new variant of COVID-19 spreading rapidly worldwide."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 2,
+    "LocationID": 2,
+    "NameEpidemic": "Monkeypox Outbreak",
+    "StartDate": "2024-02-15",
+    "EndDate": "2024-06-30",
+    "Description": "A sudden outbreak of monkeypox affecting multiple regions."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 3,
+    "LocationID": 3,
+    "NameEpidemic": "H5N1 Avian Influenza",
+    "StartDate": "2024-03-01",
+    "EndDate": "2024-10-15",
+    "Description": "A major avian flu outbreak affecting poultry and humans."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 4,
+    "LocationID": 4,
+    "NameEpidemic": "Ebola Resurgence",
+    "StartDate": "2024-04-20",
+    "EndDate": "2024-12-31",
+    "Description": "Ebola virus reemerges in parts of West Africa."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 5,
+    "LocationID": 5,
+    "NameEpidemic": "Zika Virus Outbreak",
+    "StartDate": "2024-05-05",
+    "EndDate": "2024-09-30",
+    "Description": "Zika virus spreads rapidly in tropical regions."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 6,
+    "LocationID": 6,
+    "NameEpidemic": "Cholera Epidemic",
+    "StartDate": "2024-06-10",
+    "EndDate": "2024-11-15",
+    "Description": "Cholera outbreaks in parts of South Asia and Africa."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 7,
+    "LocationID": 7,
+    "NameEpidemic": "Dengue Fever Surge",
+    "StartDate": "2024-07-01",
+    "EndDate": "2024-12-31",
+    "Description": "Dengue fever increases dramatically in Southeast Asia."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 8,
+    "LocationID": 8,
+    "NameEpidemic": "COVID-24 Delta Variant",
+    "StartDate": "2024-08-10",
+    "EndDate": "2024-12-31",
+    "Description": "A more contagious variant of COVID-24 spreads faster."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 9,
+    "LocationID": 9,
+    "NameEpidemic": "Tuberculosis Surge",
+    "StartDate": "2024-09-20",
+    "EndDate": "2024-12-31",
+    "Description": "A large-scale tuberculosis outbreak across urban areas."
+}'
+
+curl -X POST http://localhost:5000/epidemics \
+-H "Content-Type: application/json" \
+-d '{
+    "EpidemicID": 10,
+    "LocationID": 10,
+    "NameEpidemic": "MERS-CoV Outbreak",
+    "StartDate": "2024-10-15",
+    "EndDate": "2024-12-31",
+    "Description": "MERS-CoV resurges in the Middle East."
+}'
